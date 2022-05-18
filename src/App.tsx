@@ -1,8 +1,13 @@
 import './global.css'
+/* import Home from './pages/Home' */
+ import NewRoom from './pages/NewRoom' 
 
 function App() {
 
-  return (<h1 className='text-xl text-red-800 font-bold'>hello world</h1>)
+  return (
+  /*   <Home /> */
+    <NewRoom />
+  )
 }
 
 export default App
