@@ -1,7 +1,7 @@
 import React from 'react'
 import Illustration from '../assets/images/illustration.svg'
 import LogoImg from '../assets/images/logo.svg'
-import GoogleIcon from '../assets/images/google-icon.svg'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   return (
@@ -35,9 +35,9 @@ export default function Home() {
             </button>
           </form>
           <p className='text-sm flex gap-1 text-[#737380] relative bottom-6'>Quer entrar em uma sala já existente?
-            <a className=' text-red-500' href='#'>
+            <Link className=' text-red-500' to='/'>
               Click aqui
-            </a>
+            </Link>
           </p>
         </div>
       </section>
