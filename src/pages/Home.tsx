@@ -44,7 +44,7 @@ export default function Home() {
             <hr className='border-1 border-mainGrey-200 w-16' />
 
           </div>
-          <form className='flex justify-center flex-col gap-4 '>
+          <form onSubmit={handleJoinRoom} className='flex justify-center flex-col gap-4 '>
             <input
               type='text'
               placeholder='Digite o código da sala'

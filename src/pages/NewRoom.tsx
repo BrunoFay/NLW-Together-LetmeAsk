@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
 import Illustration from '../assets/images/illustration.svg'
 import LogoImg from '../assets/images/logo.svg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { database } from '../services/firebase'
+import useAuth from '../hooks/useAuth'
 
-export default function Home() {
+export default function NewRoom() {
+  const [newRoom, setNewRoom] = useState('')
+  const { user } = useAuth()
+  const navigate = useNavigate()
+  async function handleCreateRoom(e: FormEvent) {
+    e.preventDefault()
+    if (newRoom.trim() === '') {
+      return;
+    }
+    const roomRef = database.ref('rooms')
+    const firebaseRoom = await roomRef.push({
+      title: newRoom,
+      authorId: user?.id
+    })
+    navigate(`/rooms/${firebaseRoom.key}`)
+  }
+
   return (
     <main className='w-[100vw] h-[100vh] flex'>
       <section className='w-[42.25rem] h-[100vh] bg-mainPurple-500 flex items-center ' >
@@ -21,15 +39,18 @@ export default function Home() {
             justify-between'>
           <img className='h-[4.313rem] w-[9.625rem] ' src={LogoImg} alt="logo" />
           <h2 className='text-2xl font-bold relative top-3 text-zinc-800 font-[Poppins]'>Criar uma nova sala</h2>
-          <form className='flex justify-center flex-col gap-4 '>
+
+          <form onSubmit={handleCreateRoom} className='flex justify-center flex-col gap-4 '>
             <input
               type='text'
               placeholder='Nome da sala'
+              value={newRoom}
+              onChange={({ target }) => setNewRoom(target.value)}
               className='h-12 w-80 ring-1 ring-mainGrey-200 px-4 py-1 rounded-lg bg-white'
             />
             <button
               className='h-12 w-80 text-[#fefefe] px-4 py-2 rounded-lg bg-mainPurple-500'
-              type='button'
+              type='submit'
             >
               Criar sala
             </button>
