@@ -2,7 +2,7 @@ body {
 @apply bg-[#f8f8f8] text-[#29292e]
 }
 body,input,textarea,button{
-@apply font-normal text-base font-[Roboto,sans-serif]
+@apply font-normal text-base font-[Roboto,sans-serif] focus:outline-none focus:border-mainPurple-500 focus:ring-mainPurple-500 focus:ring-1
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

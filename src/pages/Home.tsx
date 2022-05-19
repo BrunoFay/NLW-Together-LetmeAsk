@@ -1,22 +1,38 @@
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
 import Illustration from '../assets/images/illustration.svg'
 import LogoImg from '../assets/images/logo.svg'
 import GoogleIcon from '../assets/images/google-icon.svg'
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
+import { database } from '../services/firebase'
 
 export default function Home() {
   const navigate = useNavigate()
   const { singInWithGoogle, user } = useAuth()
-  
+  const [roomCode, setRoomCode] = useState('')
   async function handleCreateRoom() {
     if (!user) {
-     await singInWithGoogle()
+      await singInWithGoogle()
 
     }
     navigate('/rooms/new')
   }
 
+  async function handleJoinRoom(e: FormEvent) {
+    e.preventDefault()
+
+    if (roomCode.trim() === '') {
+      return;
+    }
+    const roomRef = await database.ref(`rooms/${roomCode}`).get()
+    console.log(roomRef);
+
+    if (!roomRef.exists()) {
+      alert("Room dons't Exist, check your Code!")
+      return
+    }
+    navigate(`/rooms/${roomCode}`)
+  }
   return (
     <main className='w-[100vw] h-[100vh] flex'>
       <section className='w-[42.25rem] h-[100vh] bg-mainPurple-500 flex items-center ' >
@@ -47,12 +63,14 @@ export default function Home() {
           <form onSubmit={handleJoinRoom} className='flex justify-center flex-col gap-4 '>
             <input
               type='text'
+              value={roomCode}
+              onChange={({ target }) => setRoomCode(target.value)}
               placeholder='Digite o código da sala'
               className='h-12 w-80 ring-1 ring-mainGrey-200 px-4 py-1 rounded-lg bg-white'
             />
             <button
               className='h-12 w-80 text-[#fefefe] px-4 py-2 rounded-lg bg-mainPurple-500'
-              type='button'
+              type='submit'
             >Entrar na sala</button>
           </form>
         </div>
