@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+import Question from "../components/Question";
+
 export type CodeProps = {
   code: string;
 }
@@ -14,7 +17,7 @@ export type FirebaseQuestion = Record<string, {
   isHighlighted: boolean,
 }>
 
-export type Question = {
+export type QuestionType = {
   id: string,
   author: {
     name: string,
@@ -23,4 +26,12 @@ export type Question = {
   content: string,
   isAnswered: boolean,
   isHighlighted: boolean,
+}
+export type QuestionProps ={
+content:string,
+author:{
+  name:string,
+  avatar:string
+}
+children?:ReactNode
 }
