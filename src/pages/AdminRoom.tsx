@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import EmptyQuestions from '../assets/images/empty-questions.svg'
 import Logo from '../assets/images/logo.svg'
 import Question from '../components/Question'
@@ -8,14 +8,25 @@ import useAuth from '../hooks/useAuth'
 import useRoom from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import { Params } from '../types/room'
+import DeleteImg from '../assets/images/delete.svg'
 
 export default function AdminRoom() {
   const params = useParams<Params>()
   const { user } = useAuth()
-  const paramsId = params.id as string
-  const { questions, roomTitle } = useRoom(paramsId)
- 
+  const roomId = params.id as string
+  const { questions, roomTitle } = useRoom(roomId, handleDeleteQuestion as any)
+  const navigate = useNavigate()
 
+  async function handleEndRoom() {
+    await database.ref(`rooms/${roomId}`).remove()
+
+    navigate('/')
+  }
+  async function handleDeleteQuestion(questionId: string) {
+    if (window.confirm("Tem certeza que você deseja excluir essa pergunta?")) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    }
+  }
 
   return (
     <div className='flex justify-center flex-col items-center'>
@@ -24,9 +35,10 @@ export default function AdminRoom() {
           className='bt-5 h-14'
           src={Logo}
           alt="Letmeask logo" />
-        <div className='flex w-[32vw] relative left-10 justify-between  gap-2'>
+        <div className='flex w-[33vw] relative left-10 justify-between  gap-2'>
           <RoomCodeBtn code={`${params.id}`} />
           <button
+            onClick={handleEndRoom}
             className='ring-1 rounded-lg text-mainPurple-500 px-6 ring-mainPurple-500 hover:text-white hover:bg-mainPurple-500 transition-colors'>
             Encerrar sala
           </button>
@@ -43,7 +55,17 @@ export default function AdminRoom() {
           )}
         </div>
         {questions.length > 0 ? questions.map(q => {
-          return (<Question key={q.id} author={q.author} content={q.content} />)
+          return (
+            <Question key={q.id} author={q.author} content={q.content} >
+              <button
+                className='ring-1 focus:ring-white ring-white'
+                type='button'
+                onClick={() => handleDeleteQuestion(q.id)}
+              >
+                <img src={DeleteImg} alt="remover pergunta" />
+              </button>
+            </Question>
+          )
         })
           :
           (<div className='flex flex-col items-center self-center gap-1 w-[17.75rem]'>

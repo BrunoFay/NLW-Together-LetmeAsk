@@ -15,6 +15,9 @@ export type FirebaseQuestion = Record<string, {
   content: string,
   isAnswered: boolean,
   isHighlighted: boolean,
+  likes: Record<string, {
+    authorId: string
+  }>
 }>
 
 export type QuestionType = {
@@ -26,12 +29,14 @@ export type QuestionType = {
   content: string,
   isAnswered: boolean,
   isHighlighted: boolean,
+  likeCount: number,
+  likeId: string | undefined
 }
-export type QuestionProps ={
-content:string,
-author:{
-  name:string,
-  avatar:string
-}
-children?:ReactNode
+export type QuestionProps = {
+  content: string,
+  author: {
+    name: string,
+    avatar: string
+  }
+  children?: ReactNode
 }
