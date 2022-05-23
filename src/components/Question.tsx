@@ -1,9 +1,17 @@
 import React, { Children } from 'react'
 import { QuestionProps } from '../types/room'
 
-export default function Question({ author, content, children }: QuestionProps) {
+export default function Question({
+  author,
+  content,
+  children,
+  isAnswered = false,
+  isHighlighted = false
+}: QuestionProps) {
   return (
-    <div className='bg-[#fefefe] peer-last:bg-black hover:ring-1 hover:ring-mainPurple-500 transition-shadow flex flex-col gap-4 justify-between h-32 w-[55vw] mb-2 rounded-lg p-6'>
+    <div className={` ${isHighlighted && !isAnswered ? 'highlighted' : ''} ${isAnswered ? 'answered' : ''}
+    bg-[#fefefe] peer-last:bg-black hover:ring-1 hover:ring-mainPurple-500 transition-shadow flex flex-col gap-4 justify-between h-32 w-[55vw] mb-2 rounded-lg p-6
+    `}>
       <p className='font-[Roboto] text-base text-[#29292e]'>{content}</p>
       <footer className='flex justify-between gap-2'>
         <div className='flex items-center gap-2'>
@@ -15,7 +23,7 @@ export default function Question({ author, content, children }: QuestionProps) {
             {author.name}
           </span>
         </div>
-        <div >
+        <div className='flex gap-4' >
           {children}
         </div>
       </footer>

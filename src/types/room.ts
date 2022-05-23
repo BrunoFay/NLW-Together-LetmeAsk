@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import Question from "../components/Question";
 
 export type CodeProps = {
   code: string;
@@ -38,5 +37,7 @@ export type QuestionProps = {
     name: string,
     avatar: string
   }
-  children?: ReactNode
+  children?: ReactNode,
+  isAnswered?: boolean,
+  isHighlighted?: boolean,
 }

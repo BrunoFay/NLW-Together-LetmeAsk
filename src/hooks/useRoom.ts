@@ -15,6 +15,14 @@ export default function useRoom(
     const roomRef = database.ref(`rooms/${paramsId}`)
     roomRef.once('value', (room) => {
       const databaseRoom = room.val()
+      setRoomTitle(databaseRoom.title)
+    })
+
+  }, [])
+  useEffect(() => {
+    const roomRef = database.ref(`rooms/${paramsId}`)
+    roomRef.once('value', (room) => {
+      const databaseRoom = room.val()
       const firebaseQuestion: FirebaseQuestion = databaseRoom?.questions
       const parsedQuestion = Object.entries(firebaseQuestion).map(([key, value]) => ({
         id: key,
@@ -26,7 +34,6 @@ export default function useRoom(
         likeId: Object.entries(value.likes ?? {}).find(([key, like]) => like.authorId === user?.id)?.[0],
       }))
       setQuestions(parsedQuestion)
-      setRoomTitle(databaseRoom.title)
     })
 
     return () => {

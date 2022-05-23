@@ -10,3 +10,18 @@
 .liked svg path {
   @apply stroke-mainPurple-500
 }
+.highlighted{
+  @apply bg-[#f4f0ff] ring-1 ring-mainPurple-500
+}
+.highlighted .buttons-container {
+  @apply ring-[#f4f0ff]
+}
+.highlighted footer span{
+  @apply text-[#29292e]
+}
+.highlighted .hightlight-btn svg path{
+  @apply stroke-mainPurple-500
+}
+.answered{
+  @apply bg-[#DBDCDD]
+}
