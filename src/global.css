@@ -25,3 +25,10 @@
 .answered{
   @apply bg-[#DBDCDD]
 }
+.logoDarkMode svg path:nth-child(1),
+.logoDarkMode svg path:nth-child(2),
+.logoDarkMode svg path:nth-child(3),
+.logoDarkMode svg path:nth-child(4),
+.logoDarkMode svg path:nth-child(5) {
+@apply fill-white
+}

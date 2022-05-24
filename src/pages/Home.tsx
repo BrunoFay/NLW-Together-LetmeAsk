@@ -1,17 +1,17 @@
 import React, { FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import GoogleIcon from '../assets/images/google-icon.svg'
 import Illustration from '../assets/images/illustration.svg'
 import LogoImg from '../assets/images/logo.svg'
-import GoogleIcon from '../assets/images/google-icon.svg'
-import { useNavigate } from 'react-router-dom'
-import useAuth from '../hooks/useAuth'
-import { database } from '../services/firebase'
 import Modal from '../components/Modal'
+import useAuth from '../hooks/useAuth'
 import useModal from '../hooks/useModal'
+import { database } from '../services/firebase'
 
-const MODAL_INFOS_ENTER_ROOM={
+const MODAL_INFOS_ENTER_ROOM = {
   title: "Atenção",
   paragraph: "Código da sala invalido, verifique o código!",
-  isHomePage:true
+  isHomePage: true
 }
 export default function Home() {
   const navigate = useNavigate()
@@ -45,7 +45,7 @@ export default function Home() {
     navigate(`/rooms/${roomCode}`)
   }
   return (
-    <main className='w-[100vw] h-[100vh] flex'>
+    <main className={`w-[100vw] h-[100vh] flex  dark:bg-slate-800 `}>
       <section className='w-[42.25rem] h-[100vh] bg-mainPurple-500 flex items-center ' >
         <div className='w-[28.688rem] pl-12 flex flex-col gap-1 items-start text-left '>
           <img src={Illustration} alt="ilustração simbolizando perguntas e repostas" />
@@ -86,11 +86,11 @@ export default function Home() {
             </button>
           </form>
         </div>
-        <Modal 
+        <Modal
           modalInfos={MODAL_INFOS_ENTER_ROOM}
           isModalOpen={isModalOpen}
           closeModal={closeModal}
-          />
+        />
       </section>
     </main>
   )

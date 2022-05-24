@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react'
 import AuthContext from './authContext'
 import { firebase, auth } from '../services/firebase'
-import { IUser } from '../types/Iauth'
+import { IUser } from '../types/auth'
 
 
 export default function AuthContextProvider(props: PropsWithChildren<{}>) {
