@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { database } from '../services/firebase'
 import { FirebaseQuestion, QuestionType } from '../types/room'

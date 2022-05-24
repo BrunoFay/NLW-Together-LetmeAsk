@@ -1,11 +1,10 @@
 import React, { FormEvent, useState } from 'react'
-import Illustration from '../assets/images/illustration.svg'
-import LogoImg from '../assets/images/logo.svg'
 import { Link, useNavigate } from 'react-router-dom'
-import { database } from '../services/firebase'
-import useAuth from '../hooks/useAuth'
+import Illustration from '../assets/images/illustration.svg'
 import ThemeSwitch from '../components/ThemeSwitch'
+import useAuth from '../hooks/useAuth'
 import useDarkMode from '../hooks/useDarkMode'
+import { database } from '../services/firebase'
 
 export default function NewRoom() {
   const [newRoom, setNewRoom] = useState('')
