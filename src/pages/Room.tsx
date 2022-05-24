@@ -48,9 +48,9 @@ export default function Room() {
   }
 
   return (
-    <div className={`flex justify-center h-[100vh] flex-col items-center transition-colors ${!isDarkMode ? 'bg-slate-800 ' : ''}`}>
+    <div className={`flex justify-center h-[100vh] flex-col items-center transition-colors ${isDarkMode ? 'bg-mainDark-500' : ''} dark:bg-mainDark-500`}>
       <header className='w-[100vw] flex px-40 relative bottom-[1rem] pb-4  border-b-2 items-center  h-20 justify-between'>
-        <div className={`transition-colors ${!isDarkMode ? 'logoDarkMode ' : ''}`}>
+        <div className={`transition-colors ${isDarkMode ? 'logoDarkMode ' : ''} dark:logoDarkMode`}>
           <svg width="157" height="75" viewBox="0 0 157 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 18.999H4.47282V40.2735H0V18.999Z" fill="#29292E" />
             <path d="M22.5872 32.6181C22.5872 32.6755 22.5585 33.0769 22.5012 33.8223H10.8317C11.042 34.7781 11.5389 35.5331 12.3226 36.0874C13.1063 36.6417 14.0812 36.9189 15.2472 36.9189C16.05 36.9189 16.7572 36.8042 17.3689 36.5748C17.9997 36.3264 18.5827 35.9441 19.1179 35.428L21.4977 38.0084C20.0449 39.6714 17.9232 40.5029 15.1325 40.5029C13.3931 40.5029 11.8543 40.1684 10.5163 39.4994C9.1783 38.8113 8.14611 37.8651 7.41975 36.6609C6.6934 35.4566 6.33022 34.0899 6.33022 32.5608C6.33022 31.0507 6.68384 29.6936 7.39108 28.4894C8.11744 27.266 9.10184 26.3199 10.3443 25.6508C11.6059 24.9627 13.0108 24.6187 14.5591 24.6187C16.0691 24.6187 17.4358 24.9436 18.6591 25.5935C19.8825 26.2434 20.8382 27.18 21.5263 28.4033C22.2336 29.6076 22.5872 31.0125 22.5872 32.6181ZM14.5877 28.0019C13.5747 28.0019 12.7241 28.2887 12.0359 28.8621C11.3478 29.4355 10.9273 30.2192 10.7744 31.2132H18.3724C18.2195 30.2384 17.799 29.4642 17.1109 28.8908C16.4227 28.2982 15.5817 28.0019 14.5877 28.0019Z" fill="#29292E" />
@@ -87,8 +87,11 @@ export default function Room() {
       </header>
       <main className='w-min mt-9  flex justify-center items-start gap-6 flex-col'>
         <div className='flex gap-4'>
-          <h1 className={`font-bold text-2xl transition-colors font-[Poppins] ${!isDarkMode ? 'text-mainGrey-200 ' : ''} `}>Sala {roomTitle &&
-            roomTitle}</h1>
+          <h1
+            className={`font-bold text-2xl transition-colors font-[Poppins]
+             ${isDarkMode ? 'text-mainGrey-200' : ''} dark:text-mainGrey-200`}>
+            Sala {roomTitle && roomTitle}
+          </h1>
           {questions.length > 0 ? (
             <span
               className='rounded-[3rem] px-3 py-1 text-[#f8f8f8] font-[Roboto] font-medium text-sm bg-[#e559f9]'>
@@ -100,7 +103,8 @@ export default function Room() {
           <textarea
             value={newQuestion}
             onChange={({ target }) => setNewQuestion(target.value)}
-            className={`${!isDarkMode ? 'bg-slate-300 placeholder:text-slate-500' : ''} transition-colors w-[55vw] h-32 p-2 rounded-lg focus:ring-2 resize-none`}
+            className={`${isDarkMode ? 'bg-slate-300 placeholder:text-slate-500' : ''} dark:bg-slate-300 dark:placeholder:text-slate-500
+            transition-colors w-[55vw] h-32 p-2 rounded-lg focus:ring-2 resize-none`}
             placeholder='O que você quer perguntar?'
           />
 
@@ -118,7 +122,7 @@ export default function Room() {
                   alt={user.name}
                   className='w-8 h-8 rounded-full'
                 />
-                <span className={`font-[Roboto] font-medium text-sm transition-colors ${!isDarkMode ? 'text-white' : 'text-[#737380]'}   `}>
+                <span className={`font-[Roboto] font-medium text-sm transition-colors ${isDarkMode ? 'text-white' : 'text-[#737380]'}  dark:text-white `}>
                   {user.name}
                 </span>
               </div>)
@@ -165,7 +169,7 @@ export default function Room() {
               src={EmptyQuestions}
               alt="baloes de dialogo vazios coloridos" />
             <h2
-              className={`${!isDarkMode ? 'text-white' : ''} transition-colors font-[Poppins] text-lg font-semibold`}>Nenhuma pergunta por aqui...  </h2>
+              className={`${isDarkMode ? 'text-white' : ''} transition-colors font-[Poppins] text-lg font-semibold`}>Nenhuma pergunta por aqui...  </h2>
             <p className='font-[Roboto] text-sm text-center text-mainGrey-200'>Faça o seu login e seja a primeira pessoa a fazer uma pergunta!
             </p>
           </div>)

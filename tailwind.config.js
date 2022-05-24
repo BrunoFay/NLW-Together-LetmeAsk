@@ -7,6 +7,9 @@ module.exports = {
       },
       mainGrey:{
         200:'#a8a8b3'
+      },
+      mainDark:{
+        500:'#18181B'
       }
     }},
   },
