@@ -5,11 +5,21 @@ import GoogleIcon from '../assets/images/google-icon.svg'
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import { database } from '../services/firebase'
+import Modal from '../components/Modal'
+import useModal from '../hooks/useModal'
 
+const MODAL_INFOS_ENTER_ROOM={
+  title: "Atenção",
+  paragraph: "Código da sala invalido, verifique o código!",
+  isHomePage:true
+}
 export default function Home() {
   const navigate = useNavigate()
   const { singInWithGoogle, user } = useAuth()
   const [roomCode, setRoomCode] = useState('')
+  const { openModal, isModalOpen, closeModal } = useModal()
+
+
   async function handleCreateRoom() {
     if (!user) {
       await singInWithGoogle()
@@ -28,7 +38,8 @@ export default function Home() {
     console.log(roomRef);
 
     if (!roomRef.exists()) {
-      alert("Room dons't Exist, check your Code!")
+      openModal()
+
       return
     }
     navigate(`/rooms/${roomCode}`)
@@ -71,9 +82,15 @@ export default function Home() {
             <button
               className='h-12 w-80 text-[#fefefe] px-4 py-2 rounded-lg bg-mainPurple-500'
               type='submit'
-            >Entrar na sala</button>
+            >Entrar na sala
+            </button>
           </form>
         </div>
+        <Modal 
+          modalInfos={MODAL_INFOS_ENTER_ROOM}
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+          />
       </section>
     </main>
   )

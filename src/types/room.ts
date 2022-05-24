@@ -41,3 +41,10 @@ export type QuestionProps = {
   isAnswered?: boolean,
   isHighlighted?: boolean,
 }
+export type ModalType = {
+  isModalOpen: boolean,
+  closeModal:()=>void,
+  children?:ReactNode,
+  modalInfos:{title:string,paragraph:string,isHomePage?:boolean},
+  isHomePage?:boolean
+}

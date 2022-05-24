@@ -12,11 +12,14 @@ import { database } from '../services/firebase'
 import { Params } from '../types/room'
 
 
-const MODAL_INFOS = {
+const MODAL_INFOS_CLOSE_ROOM = {
   title: "Encerrar sala",
-  paragraph: "Você tem certeza que deseja encerrar a sala ?"
+  paragraph: "Você tem certeza que deseja encerrar a sala?"
 }
-
+const MODAL_INFOS_REMOVE_MESSAGE = {
+  title: "Excluir pergunta",
+  paragraph: "Tem certeza que você deseja excluir esta pergunta?"
+}
 export default function AdminRoom() {
   const params = useParams<Params>()
   const roomId = params.id as string
@@ -30,9 +33,7 @@ export default function AdminRoom() {
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm("Tem certeza que você deseja excluir essa pergunta?")) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
-    }
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
@@ -65,7 +66,7 @@ export default function AdminRoom() {
         <Modal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
-          modalInfos={MODAL_INFOS} >
+          modalInfos={MODAL_INFOS_CLOSE_ROOM} >
           <button
             type="button"
             className="inline-flex justify-center rounded-md border opacity-50 border-transparent bg-[#E73F5D] px-4 py-2 text-sm font-medium text-white hover:opacity-100 focus:opacity-100 "
@@ -121,10 +122,22 @@ export default function AdminRoom() {
               <button
                 className='ring-1 focus:ring-transparent ring-transparent'
                 type='button'
-                onClick={() => handleDeleteQuestion(q.id)}
+                onClick={openModal}
               >
                 <img src={DeleteImg} alt="remover pergunta" />
               </button>
+              <Modal
+                isModalOpen={isModalOpen}
+                closeModal={closeModal}
+                modalInfos={MODAL_INFOS_REMOVE_MESSAGE} >
+                <button
+                   className="inline-flex justify-center rounded-md border opacity-50 border-transparent bg-[#E73F5D] px-4 py-2 text-sm font-medium text-white hover:opacity-100 focus:opacity-100 "
+                  type='button'
+                  onClick={() => handleDeleteQuestion(q.id)}
+                >
+                  Sim, excluir
+                </button>
+              </Modal>
             </Question>
           )
         })
