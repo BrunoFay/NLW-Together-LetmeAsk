@@ -51,8 +51,8 @@ export default function AdminRoom() {
   }
 
   return (
-    <div className={`flex justify-center h-[100vh] flex-col items-center ${!isDarkMode ? 'bg-slate-800 ' : ''}`}>
-      <header className='w-[100vw] flex px-40 mt-7 pb-4 border-b-2 items-center  h-20 justify-between'>
+    <div className={`flex justify-center h-[100vh] flex-col items-center transition-colors ${!isDarkMode ? 'bg-slate-800 ' : ''}`}>
+      <header className='w-[100vw] flex px-40 border-b-2 pb-4 relative bottom-[8rem] items-center  h-20 justify-between'>
         <div className={`${!isDarkMode ? 'logoDarkMode ' : ''}`}>
           <svg width="157" height="75" viewBox="0 0 157 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 18.999H4.47282V40.2735H0V18.999Z" fill="#29292E" />
@@ -90,7 +90,8 @@ export default function AdminRoom() {
           <RoomCodeBtn code={`${params.id}`} />
           <button
             onClick={openModal}
-            className='ring-1 rounded-lg text-mainPurple-500 px-6 ring-mainPurple-500 hover:text-white hover:bg-mainPurple-500 transition-colors'>
+            className={`${!isDarkMode ? 'ring-white text-white hover:ring-mainPurple-500' :
+              ' ring-mainPurple-500 text-mainPurple-500'}  ring-1 rounded-lg  px-6  hover:text-white hover:bg-mainPurple-500 transition-colors`}>
             Encerrar sala
           </button>
         </div>
@@ -107,9 +108,12 @@ export default function AdminRoom() {
           </button>
         </Modal>
       </header>
-      <main className='w-min mt-9  flex justify-center items-start gap-6 flex-col'>
+      <main className='w-min  flex justify-center items-start gap-6 flex-col'>
         <div className='flex gap-4'>
-          <h1 className='font-bold text-2xl font-[Poppins]'>Sala {roomTitle}</h1>
+          <h1 className={`font-bold text-2xl transition-colors font-[Poppins] ${!isDarkMode ? 'text-mainGrey-200 '
+            : ''} `}>
+            Sala {roomTitle}
+          </h1>
           {questions.length > 0 && (
             <span
               className='rounded-[3rem] px-3 py-1 text-[#f8f8f8] font-[Roboto] font-medium text-sm bg-[#e559f9]'>

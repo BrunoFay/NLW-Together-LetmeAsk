@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { database } from '../services/firebase'
 import { FirebaseQuestion, QuestionType } from '../types/room'
 import useAuth from './useAuth'
@@ -10,7 +11,7 @@ export default function useRoom(
   const { user } = useAuth()
   const [questions, setQuestions] = useState<QuestionType[]>([])
   const [roomTitle, setRoomTitle] = useState('')
-
+  const location = useLocation()
   useEffect(() => {
     const roomRef = database.ref(`rooms/${paramsId}`)
     roomRef.once('value', (room) => {
@@ -18,7 +19,7 @@ export default function useRoom(
       setRoomTitle(databaseRoom.title)
     })
 
-  }, [])
+  }, [location])
   useEffect(() => {
     const roomRef = database.ref(`rooms/${paramsId}`)
     roomRef.once('value', (room) => {

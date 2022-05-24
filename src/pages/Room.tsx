@@ -12,7 +12,7 @@ import { Params } from '../types/room'
 
 export default function Room() {
   const params = useParams<Params>()
-  const { user } = useAuth()
+  const { user, singInWithGoogle } = useAuth()
   const [newQuestion, setNewQuestion] = useState('')
   const roomId = params.id as string
   const { questions, roomTitle } = useRoom(roomId, handleSendQuestion)
@@ -41,10 +41,15 @@ export default function Room() {
         authorId: user?.id
       })
   }
+  async function handleLogin() {
+    if (!user) {
+      await singInWithGoogle()
+    }
+  }
 
   return (
     <div className={`flex justify-center h-[100vh] flex-col items-center transition-colors ${!isDarkMode ? 'bg-slate-800 ' : ''}`}>
-      <header className='w-[100vw] flex px-40  pb-4 border-b-2 items-center  h-20 justify-between'>
+      <header className='w-[100vw] flex px-40 relative bottom-[1rem] pb-4  border-b-2 items-center  h-20 justify-between'>
         <div className={`transition-colors ${!isDarkMode ? 'logoDarkMode ' : ''}`}>
           <svg width="157" height="75" viewBox="0 0 157 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 18.999H4.47282V40.2735H0V18.999Z" fill="#29292E" />
@@ -103,7 +108,9 @@ export default function Room() {
             {!user ?
               (<span className='font-[Roboto] font-medium text-sm text-mainGrey-200'>Para enviar uma pergunta,
                 {" "}
-                <button className='text-mainPurple-500'> faça seu login</button>.
+                <button
+                  onClick={handleLogin}
+                  className='text-mainPurple-500'> faça seu login</button>.
               </span>) :
               (<div className='flex gap-2 items-center '>
                 <img
@@ -111,9 +118,9 @@ export default function Room() {
                   alt={user.name}
                   className='w-8 h-8 rounded-full'
                 />
-                <span className={`font-[Roboto] font-medium text-sm transition-colors ${!isDarkMode?'text-white':'text-[#737380]'}   `}>
+                <span className={`font-[Roboto] font-medium text-sm transition-colors ${!isDarkMode ? 'text-white' : 'text-[#737380]'}   `}>
                   {user.name}
-                  </span>
+                </span>
               </div>)
             }
             <button
@@ -157,8 +164,8 @@ export default function Room() {
               className='h-[9.375rem] w-[9.375rem]'
               src={EmptyQuestions}
               alt="baloes de dialogo vazios coloridos" />
-            <h2 
-            className={`${!isDarkMode ? 'text-white' : ''} transition-colors font-[Poppins] text-lg font-semibold`}>Nenhuma pergunta por aqui...  </h2>
+            <h2
+              className={`${!isDarkMode ? 'text-white' : ''} transition-colors font-[Poppins] text-lg font-semibold`}>Nenhuma pergunta por aqui...  </h2>
             <p className='font-[Roboto] text-sm text-center text-mainGrey-200'>Faça o seu login e seja a primeira pessoa a fazer uma pergunta!
             </p>
           </div>)

@@ -35,7 +35,6 @@ export default function Home() {
       return;
     }
     const roomRef = await database.ref(`rooms/${roomCode}`).get()
-    console.log(roomRef);
 
     if (!roomRef.exists()) {
       openModal()
