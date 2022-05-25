@@ -52,7 +52,7 @@ export default function AdminRoom() {
 
   return (
     <div className={`flex justify-center h-[100vh] flex-col items-center transition-colors ${isDarkMode ? 'bg-mainDark-500' : ''} dark:bg-mainDark-500`}>
-      <header className='w-[100vw] flex px-40 border-b-2 pb-4 relative bottom-[8rem] items-center  h-20 justify-between'>
+      <header className='w-[100vw] flex  lg:px-36 px-16 border-b-2 pb-4 relative bottom-[8rem] items-center  h-20 md:justify-between'>
         <div className={`${isDarkMode ? 'logoDarkMode' : ''} dark:logoDarkMode`}>
           <svg width="157" height="75" viewBox="0 0 157 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 18.999H4.47282V40.2735H0V18.999Z" fill="#29292E" />
@@ -86,7 +86,7 @@ export default function AdminRoom() {
 
         </div>
         <ThemeSwitch />
-        <div className='flex w-[33vw] relative left-10 justify-between  gap-2'>
+        <div className='flex w-[33vw] lg:flex-row flex-col relative left-10 justify-between  gap-2'>
           <RoomCodeBtn code={`${params.id}`} />
           <button
             onClick={openModal}

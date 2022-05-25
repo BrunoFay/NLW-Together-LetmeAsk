@@ -47,9 +47,12 @@ export default function Home() {
   }
   return (
     <main className={`w-[100vw] h-[100vh] flex ${isDarkMode ? 'bg-mainDark-500' : ''} dark:bg-mainDark-500 `}>
-      <section className='w-[42.25rem] h-[100vh] bg-mainPurple-500 flex items-center ' >
+      <section className='md:visible hidden w-[42.25rem] h-[100vh] bg-gradient-to-r from-indigo-500 to-mainPurple-500 md:flex items-center ' >
         <div className='w-[28.688rem] pl-12 flex flex-col gap-1 items-start text-left '>
-          <img src={Illustration} alt="ilustração simbolizando perguntas e repostas" />
+          <img
+            className='py-5'
+            src={Illustration}
+            alt="ilustração simbolizando perguntas e repostas" />
           <h1 className='font-[Poppins] text-4xl font-bold text-white'>Toda pergunta tem uma resposta.</h1>
           <p className='font-[Roboto] text-2xl font-normal  text-[#f8f8f8] opacity-70'>Aprenda e compartilhe conhecimento
             com outras pessoas
