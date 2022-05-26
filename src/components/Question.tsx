@@ -12,10 +12,14 @@ export default function Question({
   const { isDarkMode } = useDarkMode()
   return (
     <div
-      className={` ${isHighlighted && !isAnswered ? 'highlighted' : ''} ${isAnswered ? 'answered' : ''}
-      ${isDarkMode ? 'bg-slate-300' : 'bg-[#fefefe]'} question dark:bg-slate-300
-    peer-last:bg-black hover:ring-1 hover:ring-mainPurple-500 transition-shadow flex flex-col gap-4 justify-between h-32 w-[55vw]  rounded-lg p-6  `}>
-      <p className='font-[Roboto] text-base text-[#29292e]'>{content}</p>
+      className={` 
+      ${isHighlighted && !isAnswered ? 'highlighted' : ''}
+       ${isAnswered ? 'answered hover:ring-current' : ''}
+      ${isDarkMode ? 'bg-slate-100' : 'bg-[#fefefe]'} dark:bg-slate-300
+    peer-last:bg-black hover:ring-2 hover:ring-mainPurple-500 transition-shadow flex flex-col gap-4 justify-between
+      md:w-[55vw]  w-[90vw] rounded-lg p-5 `}>
+      <p className='font-[Roboto] text-base  max-h-[6rem] text-[#29292e]  break-all overflow-auto w-auto  '>{content}
+      </p>
       <footer className='flex justify-between gap-2'>
         <div className='flex items-center gap-2'>
           <img

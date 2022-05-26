@@ -46,7 +46,7 @@ export default function Home() {
     navigate(`/rooms/${roomCode}`)
   }
   return (
-    <main className={`w-[100vw] h-[100vh] flex ${isDarkMode ? 'bg-mainDark-500' : ''} dark:bg-mainDark-500 `}>
+    <main className={`w-[100vw] h-[100vh] flex dark:bg-mainDark-500 `}>
       <section className='md:visible hidden w-[42.25rem] h-[100vh] bg-gradient-to-r from-indigo-500 to-mainPurple-500 md:flex items-center ' >
         <div className='w-[28.688rem] pl-12 flex flex-col gap-1 items-start text-left '>
           <img

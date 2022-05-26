@@ -25,7 +25,7 @@ export default function NewRoom() {
   }
 
   return (
-    <main className={`w-[100vw] h-[100vh] flex ${isDarkMode ? 'bg-mainDark-500' : ''} dark:bg-mainDark-500`}>
+    <main className={`w-[100vw] h-[100vh] flex dark:bg-mainDark-500`}>
       <section
         className='w-[42.25rem] md:visible hidden h-[100vh] bg-gradient-to-r from-indigo-500 to-mainPurple-500  md:flex items-center ' >
         <div className='w-[28.688rem] pl-12 flex gap-1 flex-col items-start text-left '>

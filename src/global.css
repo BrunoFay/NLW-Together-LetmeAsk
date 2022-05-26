@@ -28,8 +28,12 @@
 }
 
 .answered {
-  @apply bg-[#DBDCDD]
+  @apply bg-[#94aac0]
 }
+
+ .answered footer svg path {
+  @apply stroke-mainPurple-500
+} 
 
 .logoDarkMode svg path:nth-child(1),
 .logoDarkMode svg path:nth-child(2),
@@ -39,17 +43,22 @@
   @apply fill-white
 }
 
+.room-header .logo {
+  @apply relative left-2
+}
+
 @media screen and (max-width: 1024px) {
   .admin-header-btn {
     @apply justify-center items-center
   }
-.admin-main:not(.admin-main > div:first-child){
-  @apply  w-[80%] flex items-center relative bottom-[6.5rem]
 
-}
-.admin-main > div:first-child{
-  @apply self-start
-}
+  .room-header button .admin-main:not(.admin-main > div:first-child) {
+    @apply w-[80%] flex items-center relative bottom-[6.5rem]
+  }
+
+  .admin-main>div:first-child {
+    @apply self-start
+  }
 
   .admin-header-btn button {
     @apply w-[16rem]
@@ -58,15 +67,20 @@
   .close-room-btn {
     @apply h-10 relative bottom-5 justify-center items-center
   }
+
+  .room-header {
+    @apply flex items-center justify-between
+  }
 }
 
 @media screen and (max-width: 668px) {
- 
-  .question {
-    @apply w-[80vw]
-  }
-  .admin-header {
+
+  .admin-header, .room-header {
     @apply absolute top-0 flex-col h-[11.5rem] w-[100%] items-center
+  }
+
+  .room-header {
+    @apply h-[9.5rem]
   }
 
   .admin-header-btn button:first-child {
@@ -77,12 +91,17 @@
     @apply max-w-[9rem]
   }
 
+
   .themeSwitch {
     @apply absolute top-[-3rem] right-1
   }
 
+  .room-header .logo {
+    @apply left-0
+  }
+
   .logo {
-    @apply relative my-3 right-[37%]
+    @apply my-3
   }
 
   .logo svg {
@@ -91,5 +110,9 @@
 
   .admin-main {
     @apply pt-[17vh]
+  }
+
+  .room-main {
+    @apply pt-[10vh]
   }
 }
