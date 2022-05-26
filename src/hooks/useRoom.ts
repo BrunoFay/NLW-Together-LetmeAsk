@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { database } from '../services/firebase'
 import { FirebaseQuestion, QuestionType } from '../types/room'
@@ -42,5 +42,5 @@ export default function useRoom(paramsId: string) {
     }
   }, [paramsId, user?.id])
 
-  return { questions, roomTitle }
+  return { questions, roomTitle, setQuestions }
 }

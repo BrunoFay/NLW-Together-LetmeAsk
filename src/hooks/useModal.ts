@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export default function useModal() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -8,5 +8,5 @@ export default function useModal() {
   function openModal() {
     setIsModalOpen(true)
   }
-  return {closeModal,openModal,isModalOpen}
+  return { closeModal, openModal, isModalOpen }
 }

@@ -3,8 +3,8 @@ export type IAuthContext = {
   singInWithGoogle: () => Promise<void>
 }
 
-export type IUser={
-  id:string,
-  name:string,
-  avatar:string
+export type IUser = {
+  id: string,
+  name: string,
+  avatar: string
 }

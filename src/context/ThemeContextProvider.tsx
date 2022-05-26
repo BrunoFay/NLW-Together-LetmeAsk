@@ -7,7 +7,7 @@ export default function ThemeContextProvider(props: PropsWithChildren<{}>) {
   function changeThemeMode() {
     setIsDarkMode(!isDarkMode)
   }
-  const valueToProvide = { isDarkMode,changeThemeMode }
+  const valueToProvide = { isDarkMode, changeThemeMode }
   return (
     <ThemeContext.Provider value={valueToProvide}>
       {props.children}

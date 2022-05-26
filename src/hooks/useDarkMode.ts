@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import themeContext from '../context/themeContext'
 
 export default function useDarkMode() {

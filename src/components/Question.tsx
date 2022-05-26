@@ -3,6 +3,7 @@ import useDarkMode from '../hooks/useDarkMode'
 import { QuestionProps } from '../types/room'
 
 export default function Question({
+  key,
   author,
   content,
   children,
@@ -11,7 +12,7 @@ export default function Question({
 }: QuestionProps) {
   const { isDarkMode } = useDarkMode()
   return (
-    <div
+    <div key={key}
       className={` 
       ${isHighlighted && !isAnswered ? 'highlighted' : ''}
        ${isAnswered ? 'answered hover:ring-current' : ''}

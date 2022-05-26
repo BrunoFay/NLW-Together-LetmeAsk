@@ -1,9 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import './global.css'
+import AdminRoom from './pages/AdminRoom'
 import Home from './pages/Home'
 import NewRoom from './pages/NewRoom'
-import './global.css'
 import Room from './pages/Room'
-import AdminRoom from './pages/AdminRoom'
 function App() {
 
   return (

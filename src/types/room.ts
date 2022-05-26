@@ -32,6 +32,8 @@ export type QuestionType = {
   likeId: string | undefined
 }
 export type QuestionProps = {
+  removeQuestion?: boolean
+  key?: string
   content: string,
   author: {
     name: string,
@@ -43,8 +45,8 @@ export type QuestionProps = {
 }
 export type ModalType = {
   isModalOpen: boolean,
-  closeModal:()=>void,
-  children?:ReactNode,
-  modalInfos:{title:string,paragraph:string,isHomePage?:boolean},
-  isHomePage?:boolean
+  closeModal: () => void,
+  children?: ReactNode,
+  modalInfos: { title: string, paragraph: string, isHomePage?: boolean },
+  isHomePage?: boolean
 }

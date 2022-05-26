@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import DeleteImg from '../assets/images/delete.svg'
 import EmptyQuestions from '../assets/images/empty-questions.svg'
 import Modal from '../components/Modal'
 import Question from '../components/Question'
@@ -24,11 +23,12 @@ const MODAL_INFOS_REMOVE_MESSAGE = {
 export default function AdminRoom() {
   const params = useParams<Params>()
   const roomId = params.id as string
-  const { questions, roomTitle } = useRoom(roomId)
+  const { questions, roomTitle, setQuestions } = useRoom(roomId)
   const navigate = useNavigate()
   const { openModal, isModalOpen, closeModal } = useModal()
   const { isDarkMode } = useDarkMode()
   const [isClosedCliked, setIsClosedCliked] = useState(false)
+  const [idQuestionToDelete, setIdQuestionToDelete] = useState('')
 
   function modalCloseRoom() {
     setIsClosedCliked(!isClosedCliked)
@@ -40,9 +40,11 @@ export default function AdminRoom() {
     })
     navigate('/')
   }
-
+  function middleDeleteQuestion(questionId: string) {
+    setIdQuestionToDelete(questionId)
+    openModal()
+  }
   async function handleDeleteQuestion(questionId: string) {
-
     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
   }
 
@@ -137,6 +139,7 @@ export default function AdminRoom() {
               content={q.content}
               isAnswered={q.isAnswered}
               isHighlighted={q.isHighlighted}
+              removeQuestion={true}
             >
               {!q.isAnswered && (
                 <>
@@ -165,7 +168,7 @@ export default function AdminRoom() {
               <button
                 className='ring-1 focus:ring-transparent ring-transparent'
                 type='button'
-                onClick={openModal}
+                onClick={() => middleDeleteQuestion(q.id)}
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3 5.99988H5H21" stroke="#737380" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -174,13 +177,13 @@ export default function AdminRoom() {
 
               </button>
               <Modal
-                isModalOpen={isModalOpen && !isClosedCliked ? true : false}
+                isModalOpen={isModalOpen}
                 closeModal={closeModal}
                 modalInfos={MODAL_INFOS_REMOVE_MESSAGE} >
                 <button
                   className="inline-flex justify-center rounded-md border opacity-50 border-transparent bg-[#E73F5D] px-4 py-2 text-sm font-medium text-white hover:opacity-100 focus:opacity-100 "
                   type='button'
-                  onClick={() => handleDeleteQuestion(q.id)}
+                  onClick={() => handleDeleteQuestion(idQuestionToDelete)}
                 >
                   Sim, excluir
                 </button>
