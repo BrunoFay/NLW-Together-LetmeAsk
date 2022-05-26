@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import DeleteImg from '../assets/images/delete.svg'
 import EmptyQuestions from '../assets/images/empty-questions.svg'
@@ -24,17 +24,25 @@ const MODAL_INFOS_REMOVE_MESSAGE = {
 export default function AdminRoom() {
   const params = useParams<Params>()
   const roomId = params.id as string
-  const { questions, roomTitle } = useRoom(roomId, handleDeleteQuestion as any)
+  const { questions, roomTitle } = useRoom(roomId)
   const navigate = useNavigate()
   const { openModal, isModalOpen, closeModal } = useModal()
   const { isDarkMode } = useDarkMode()
+  const [isClosedCliked, setIsClosedCliked] = useState(false)
 
+  function modalCloseRoom() {
+    setIsClosedCliked(!isClosedCliked)
+    /* openModal() */
+  }
   async function handleEndRoom() {
-    await database.ref(`rooms/${roomId}`).remove()
+    await database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date(),
+    })
     navigate('/')
   }
 
   async function handleDeleteQuestion(questionId: string) {
+
     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
   }
 
@@ -88,7 +96,7 @@ export default function AdminRoom() {
         <div className='admin-header-btn flex  w-[30rem] lg:flex-row flex-col  justify-evenly gap-8  '>
           <RoomCodeBtn code={`${params.id}`} />
           <button
-            onClick={openModal}
+            onClick={modalCloseRoom}
             className={`${isDarkMode ? 'ring-white text-white hover:ring-mainPurple-500' :
               'ring-mainPurple-500 text-mainPurple-500'} dark:ring-white dark:text-white dark:hover:ring-mainPurple-500 ring-1 rounded-lg  md:px-6  hover:text-white hover:bg-mainPurple-500 transition-colors close-room-btn`}>
             Encerrar sala
@@ -96,8 +104,8 @@ export default function AdminRoom() {
         </div>
         <ThemeSwitch />
         <Modal
-          isModalOpen={isModalOpen}
-          closeModal={closeModal}
+          isModalOpen={(isClosedCliked)}
+          closeModal={modalCloseRoom}
           modalInfos={MODAL_INFOS_CLOSE_ROOM} >
           <button
             type="button"
@@ -166,7 +174,7 @@ export default function AdminRoom() {
 
               </button>
               <Modal
-                isModalOpen={isModalOpen}
+                isModalOpen={isModalOpen && !isClosedCliked ? true : false}
                 closeModal={closeModal}
                 modalInfos={MODAL_INFOS_REMOVE_MESSAGE} >
                 <button

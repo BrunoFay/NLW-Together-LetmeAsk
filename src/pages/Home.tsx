@@ -14,11 +14,18 @@ const MODAL_INFOS_ENTER_ROOM = {
   paragraph: "Código da sala invalido, verifique o código!",
   isHomePage: true
 }
+const MODAL_INFOS_CLOSED_ROOM = {
+  title: "Atenção",
+  paragraph: "Essa sala já foi encerrada!",
+  isHomePage: true
+}
 export default function Home() {
   const navigate = useNavigate()
   const { singInWithGoogle, user } = useAuth()
   const [roomCode, setRoomCode] = useState('')
   const { openModal, isModalOpen, closeModal } = useModal()
+  const [isRoomClosed, setIsRoomClosed] = useState(false)
+
   const { isDarkMode } = useDarkMode()
 
 
@@ -42,6 +49,10 @@ export default function Home() {
       openModal()
 
       return
+    }
+    if (roomRef.val().endedAt) {
+      setIsRoomClosed(true)
+      return;
     }
     navigate(`/rooms/${roomCode}`)
   }
@@ -125,6 +136,11 @@ export default function Home() {
           modalInfos={MODAL_INFOS_ENTER_ROOM}
           isModalOpen={isModalOpen}
           closeModal={closeModal}
+        />
+        <Modal
+          modalInfos={MODAL_INFOS_CLOSED_ROOM}
+          isModalOpen={isRoomClosed}
+          closeModal={() => { setIsRoomClosed(false) }}
         />
       </section>
       <div className='fixed right-4  top-0'>

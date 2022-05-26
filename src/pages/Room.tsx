@@ -15,7 +15,7 @@ export default function Room() {
   const { user, singInWithGoogle } = useAuth()
   const [newQuestion, setNewQuestion] = useState('')
   const roomId = params.id as string
-  const { questions, roomTitle } = useRoom(roomId, handleSendQuestion)
+  const { questions, roomTitle } = useRoom(roomId)
   const { isDarkMode } = useDarkMode()
 
   async function sendQuestionToDb() {

@@ -63,7 +63,7 @@ export default function Modal({
                       className="inline-flex justify-center rounded-md border opacity-50 border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:opacity-100 focus:opacity-100 "
                       onClick={closeModal}
                     >
-                     {modalInfos.isHomePage ? "Voltar" : "Cancelar"}
+                     {isHomePage ? "Voltar" : "Cancelar"}
                     </button>
                     {children}
                   </div>
