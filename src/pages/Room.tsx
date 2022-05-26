@@ -49,7 +49,7 @@ export default function Room() {
 
   return (
     <div className={`flex justify-center h-[100vh] flex-col items-center transition-colors ${isDarkMode ? 'bg-mainDark-500' : ''} dark:bg-mainDark-500`}>
-      <header className='w-[100vw] flex px-40 relative bottom-[1rem] pb-4  border-b-2 items-center  h-20 justify-between'>
+      <header className='w-[100vw] flex px-5 relative bottom-[1rem] pb-4  border-b-2 items-center  h-20 justify-between'>
         <div className={`transition-colors ${isDarkMode ? 'logoDarkMode ' : ''} dark:logoDarkMode`}>
           <svg width="157" height="75" viewBox="0 0 157 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 18.999H4.47282V40.2735H0V18.999Z" fill="#29292E" />
@@ -82,8 +82,8 @@ export default function Room() {
           </svg>
 
         </div>
-        <ThemeSwitch />
         <RoomCodeBtn code={`${params.id}`} />
+        <ThemeSwitch />
       </header>
       <main className='w-min mt-9  flex justify-center items-start gap-6 flex-col'>
         <div className='flex gap-4'>

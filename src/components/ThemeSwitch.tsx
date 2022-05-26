@@ -7,7 +7,7 @@ export default function ThemeSwitch() {
   const { changeThemeMode, isDarkMode } = useDarkMode()
 
   return (
-    <div className="py-16">
+    <div className="themeSwitch py-16">
       <Switch
         checked={isDarkMode}
         onChange={changeThemeMode}

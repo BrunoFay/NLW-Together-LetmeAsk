@@ -10,31 +10,73 @@
 .liked svg path {
   @apply stroke-mainPurple-500
 }
-.highlighted{
+
+.highlighted {
   @apply bg-[#f4f0ff] ring-1 ring-mainPurple-500
 }
+
 .highlighted .buttons-container {
   @apply ring-[#f4f0ff]
 }
-.highlighted footer span{
+
+.highlighted footer span {
   @apply text-[#29292e]
 }
-.highlighted .hightlight-btn svg path{
+
+.highlighted .hightlight-btn svg path {
   @apply stroke-mainPurple-500
 }
-.answered{
+
+.answered {
   @apply bg-[#DBDCDD]
 }
+
 .logoDarkMode svg path:nth-child(1),
 .logoDarkMode svg path:nth-child(2),
 .logoDarkMode svg path:nth-child(3),
 .logoDarkMode svg path:nth-child(4),
 .logoDarkMode svg path:nth-child(5) {
-@apply fill-white
+  @apply fill-white
 }
-@media screen and (min-width: 768px) {
-  .img-section-home{
-    @apply visible
+
+@media screen and (max-width: 1024px) {
+  .admin-header-btn {
+    @apply justify-center items-center
   }
-  
+
+  .admin-header-btn button {
+    @apply w-[16rem]
+  }
+
+  .close-room-btn {
+    @apply h-10 relative bottom-5 justify-center items-center
+  }
+}
+
+@media screen and (max-width: 668px) {
+  body{
+    @apply overflow-hidden
+  }
+  .admin-header {
+    @apply  absolute top-0 flex-col h-[11.5rem] w-[100%] items-center
+  }
+  .admin-header-btn button:first-child {
+    @apply w-auto
+  }
+  .admin-header-btn button:last-child {
+    @apply max-w-[9rem]
+  }
+  .themeSwitch {
+    @apply absolute top-[-3rem] right-1
+  }
+
+  .logo {
+    @apply relative my-3  right-[37%]
+  }
+  .logo svg{
+    @apply h-[3.2rem]
+  }
+  .admin-main{
+    @apply pt-[17vh]
+  }
 }
