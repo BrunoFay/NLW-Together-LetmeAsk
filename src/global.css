@@ -43,6 +43,13 @@
   .admin-header-btn {
     @apply justify-center items-center
   }
+.admin-main:not(.admin-main > div:first-child){
+  @apply  w-[80%] flex items-center relative bottom-[6.5rem]
+
+}
+.admin-main > div:first-child{
+  @apply self-start
+}
 
   .admin-header-btn button {
     @apply w-[16rem]
@@ -54,29 +61,35 @@
 }
 
 @media screen and (max-width: 668px) {
-  body{
-    @apply overflow-hidden
+ 
+  .question {
+    @apply w-[80vw]
   }
   .admin-header {
-    @apply  absolute top-0 flex-col h-[11.5rem] w-[100%] items-center
+    @apply absolute top-0 flex-col h-[11.5rem] w-[100%] items-center
   }
+
   .admin-header-btn button:first-child {
     @apply w-auto
   }
+
   .admin-header-btn button:last-child {
     @apply max-w-[9rem]
   }
+
   .themeSwitch {
     @apply absolute top-[-3rem] right-1
   }
 
   .logo {
-    @apply relative my-3  right-[37%]
+    @apply relative my-3 right-[37%]
   }
-  .logo svg{
+
+  .logo svg {
     @apply h-[3.2rem]
   }
-  .admin-main{
+
+  .admin-main {
     @apply pt-[17vh]
   }
 }

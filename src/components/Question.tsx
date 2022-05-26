@@ -13,9 +13,8 @@ export default function Question({
   return (
     <div
       className={` ${isHighlighted && !isAnswered ? 'highlighted' : ''} ${isAnswered ? 'answered' : ''}
-      ${isDarkMode ? 'bg-slate-300' : 'bg-[#fefefe]'} dark:bg-slate-300
-    peer-last:bg-black hover:ring-1 hover:ring-mainPurple-500 transition-shadow flex flex-col gap-4 justify-between h-32 w-[55vw] mb-2 rounded-lg p-6
-    `}>
+      ${isDarkMode ? 'bg-slate-300' : 'bg-[#fefefe]'} question dark:bg-slate-300
+    peer-last:bg-black hover:ring-1 hover:ring-mainPurple-500 transition-shadow flex flex-col gap-4 justify-between h-32 w-[55vw]  rounded-lg p-6  `}>
       <p className='font-[Roboto] text-base text-[#29292e]'>{content}</p>
       <footer className='flex justify-between gap-2'>
         <div className='flex items-center gap-2'>

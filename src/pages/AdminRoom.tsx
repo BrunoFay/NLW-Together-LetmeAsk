@@ -109,7 +109,7 @@ export default function AdminRoom() {
           </button>
         </Modal>
       </header>
-      <main className='admin-main w-min flex justify-center items-start gap-6 flex-col'>
+      <main className='admin-main w-min h-[42vh] relative bottom-16 flex items-start gap-6 flex-col'>
         <div className='flex gap-4'>
           <h1 className={`font-bold text-2xl transition-colors font-[Poppins] ${isDarkMode ? 'text-mainGrey-200 '
             : ''} dark:text-mainGrey-200 `}>
@@ -190,7 +190,8 @@ export default function AdminRoom() {
 
           </div>)
         }
-
+        {/* space for the last div not to be pasted */}
+        <span className='pt-1 h-8 w-1' />
       </main>
     </div>
   )
