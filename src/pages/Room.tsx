@@ -99,8 +99,8 @@ export default function Room() {
 
         {questions.length > 0 ? questions
           .sort((a, b) => b.likeCount - a.likeCount)
-          .sort(x => x.isHighlighted ? -1 : 1)
           .sort(x => !x.isAnswered ? -1 : 1)
+          .sort(x => x.isHighlighted ? -1 : 1)
           .map(q => {
             return (
               <Question
