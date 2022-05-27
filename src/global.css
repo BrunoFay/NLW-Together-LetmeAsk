@@ -84,14 +84,14 @@
     @apply h-[9.5rem]
   }
   .admin-header-btn{
-    @apply top-0 gap-8
+    @apply top-0 gap-8 
   }
   .admin-header-btn button:first-child {
     @apply w-auto
   }
 
   .admin-header-btn button:last-child {
-    @apply max-w-[9rem]
+    @apply max-w-[9rem] z-10
   }
 
 
