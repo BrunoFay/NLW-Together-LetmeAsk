@@ -47,7 +47,7 @@
   @apply relative left-2
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .admin-header-btn {
     @apply justify-center items-center relative top-2  gap-7
   }
