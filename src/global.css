@@ -49,7 +49,7 @@
 
 @media screen and (max-width: 1024px) {
   .admin-header-btn {
-    @apply justify-center items-center
+    @apply justify-center items-center relative top-2  gap-7
   }
 
   .room-header button .admin-main:not(.admin-main > div:first-child) {
@@ -76,13 +76,15 @@
 @media screen and (max-width: 668px) {
 
   .admin-header, .room-header {
-    @apply absolute top-0 flex-col h-[11.5rem] w-[100%] items-center
+    @apply absolute top-0 flex-col h-[11.5rem] w-[100%] items-center 
   }
 
   .room-header {
     @apply h-[9.5rem]
   }
-
+  .admin-header-btn{
+    @apply top-0 gap-8
+  }
   .admin-header-btn button:first-child {
     @apply w-auto
   }

@@ -69,7 +69,7 @@ export default function AdminRoom() {
     <div className={`flex justify-center h-[100vh] flex-col items-center transition-colors dark:bg-mainDark-500`}>
       <header className='admin-header w-[100vw] flex px-5 border-b-2 pb-4 relative bottom-[8rem] items-center h-20 md:justify-between'>
         <LogoComponent />
-        <div className='admin-header-btn flex  w-[30rem] lg:flex-row flex-col  justify-evenly gap-8  '>
+        <div className='admin-header-btn flex  w-[30rem] lg:flex-row flex-col justify-evenly gap-8  '>
           <RoomCodeBtn code={`${params.id}`} />
           <button
             onClick={modalCloseRoom}
