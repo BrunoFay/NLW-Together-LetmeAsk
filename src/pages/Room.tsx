@@ -99,8 +99,7 @@ export default function Room() {
 
         {questions.length > 0 ? questions
           .sort((a, b) => b.likeCount - a.likeCount)
-          .sort(x => !x.isAnswered ? -1 : 1)
-          .sort(x => x.isHighlighted ? -1 : 1)
+          .sort(x => !x.isAnswered && x.isHighlighted   ? -1 : 1)
           .map(q => {
             return (
               <Question
@@ -136,7 +135,7 @@ export default function Room() {
               src={EmptyQuestions}
               alt="baloes de dialogo vazios coloridos" />
             <h2
-              className={`${isDarkMode ? 'text-white' : ''} transition-colors font-[Poppins] text-lg font-semibold`}>Nenhuma pergunta por aqui...  </h2>
+              className={`${isDarkMode ? 'text-white' : ''} dark:text-white transition-colors font-[Poppins] text-lg font-semibold`}>Nenhuma pergunta por aqui...  </h2>
             <p className='font-[Roboto] text-sm text-center text-mainGrey-200'>Faça o seu login e seja a primeira pessoa a fazer uma pergunta!
             </p>
           </div>)

@@ -20,10 +20,17 @@ export default function RoomCodeBtn(props: CodeProps) {
         className=''
         src={CopyImg}
         alt="copiar codigo da sala" />
-      {!isCodeCopied ? (<p className={`${isDarkMode ? 'bg-slate-200 text-[#43434d] ' : ''} bg-white font-[Roboto] px-2 rounded-r-lg font-medium text-sm h-auto py-[0.64rem] w-[110%]`}>
-        Sala: {props.code}</p>) :
-        (<p className={`${isDarkMode ? 'bg-slate-300 text-[#43434d] ' : ''} bg-white font-[Roboto] px-2 rounded-r-lg font-medium text-sm h-auto py-[0.64rem] w-[110%]`}>
-          Copiado !</p>)
+      {!isCodeCopied ? (
+        <p className={`${isDarkMode ? 'bg-slate-200 text-[#43434d]' : 'bg-white '} 
+        dark:bg-slate-200 dark:text-[#43434d] font-[Roboto] px-2 rounded-r-lg font-medium text-sm h-auto py-[0.64rem] w-[110%]`}>
+          Sala: {props.code}
+        </p>
+      ) :
+        (
+          <p className={`${isDarkMode ? 'bg-slate-300 text-[#43434d] ' : 'bg-white'} dark:bg-slate-200 dark:text-[#43434d] font-[Roboto] px-2 rounded-r-lg font-medium text-sm h-auto py-[0.64rem] w-[110%]`}>
+            Copiado !
+          </p>
+        )
       }
     </button>
   )

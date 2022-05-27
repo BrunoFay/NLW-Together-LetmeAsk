@@ -12,6 +12,7 @@ export default function NewRoom() {
   const { user } = useAuth()
   const navigate = useNavigate()
   const { isDarkMode } = useDarkMode()
+  
   async function handleCreateRoom(e: FormEvent) {
     e.preventDefault()
     if (newRoom.trim() === '') {

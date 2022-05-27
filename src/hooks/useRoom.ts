@@ -9,6 +9,7 @@ export default function useRoom(paramsId: string) {
   const [questions, setQuestions] = useState<QuestionType[]>([])
   const [roomTitle, setRoomTitle] = useState('')
   const location = useLocation()
+
   useEffect(() => {
     const roomRef = database.ref(`rooms/${paramsId}`)
     roomRef.once('value', (room) => {
@@ -17,12 +18,12 @@ export default function useRoom(paramsId: string) {
     })
 
   }, [location])
+
   useEffect(() => {
     const roomRef = database.ref(`rooms/${paramsId}`)
     roomRef.on('value', room => {
       const databaseRoom = room.val();
       const firebaseQuestions: FirebaseQuestion = databaseRoom.questions ?? {};
-
       const parsedQuestions = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
@@ -42,5 +43,5 @@ export default function useRoom(paramsId: string) {
     }
   }, [paramsId, user?.id])
 
-  return { questions, roomTitle, setQuestions }
+  return { questions, roomTitle }
 }

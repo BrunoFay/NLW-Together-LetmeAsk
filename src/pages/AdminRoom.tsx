@@ -25,26 +25,29 @@ const MODAL_INFOS_REMOVE_MESSAGE = {
 export default function AdminRoom() {
   const params = useParams<Params>()
   const roomId = params.id as string
-  const { questions, roomTitle, setQuestions } = useRoom(roomId)
+  const { questions, roomTitle } = useRoom(roomId)
   const navigate = useNavigate()
   const { openModal, isModalOpen, closeModal } = useModal()
   const { isDarkMode } = useDarkMode()
-  const [isClosedCliked, setIsClosedCliked] = useState(false)
+  const [isClosedClicked, setIsClosedClicked] = useState(false)
   const [idQuestionToDelete, setIdQuestionToDelete] = useState('')
 
   function modalCloseRoom() {
-    setIsClosedCliked(!isClosedCliked)
+    setIsClosedClicked(!isClosedClicked)
   }
+
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
       endedAt: new Date(),
     })
     navigate('/')
   }
+
   function middleDeleteQuestion(questionId: string) {
     setIdQuestionToDelete(questionId)
     openModal()
   }
+
   async function handleDeleteQuestion(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
     closeModal()
@@ -71,13 +74,13 @@ export default function AdminRoom() {
           <button
             onClick={modalCloseRoom}
             className={`${isDarkMode ? 'ring-white text-white hover:ring-mainColor-500' :
-              'ring-mainColor-500 text-mainColor-500'} dark:ring-white dark:text-white dark:hover:ring-mainColor-500 ring-1 rounded-lg  md:px-6  hover:text-white hover:bg-mainColor-500 transition-colors close-room-btn`}>
+              'ring-mainColor-500 text-mainColor-500'} dark:ring-white dark:text-white dark:hover:ring-mainColor-500 ring-1 rounded-lg md:px-6 hover:text-white hover:bg-mainColor-500 transition-colors close-room-btn`}>
             Encerrar sala
           </button>
         </div>
         <ThemeSwitch />
         <Modal
-          isModalOpen={(isClosedCliked)}
+          isModalOpen={(isClosedClicked)}
           closeModal={modalCloseRoom}
           modalInfos={MODAL_INFOS_CLOSE_ROOM} >
           <button
@@ -97,8 +100,7 @@ export default function AdminRoom() {
         />
         {questions.length > 0 ? questions
           .sort((a, b) => b.likeCount - a.likeCount)
-          .sort(x => !x.isAnswered ? -1 : 1)
-          .sort(x => x.isHighlighted ? -1 : 1)
+          .sort(x => !x.isAnswered && x.isHighlighted ? -1 : 1)
           .map(q => {
             return (
               <Question
@@ -149,7 +151,7 @@ export default function AdminRoom() {
                   closeModal={closeModal}
                   modalInfos={MODAL_INFOS_REMOVE_MESSAGE} >
                   <button
-                    className="inline-flex justify-center rounded-md border opacity-50 border-transparent bg-[#E73F5D] px-4 py-2 text-sm font-medium text-white hover:opacity-100 focus:opacity-100 "
+                    className="inline-flex justify-center rounded-md border opacity-50 border-transparent bg-secondaryColor-500 px-4 py-2 text-sm font-medium text-white hover:opacity-100 focus:opacity-100 "
                     type='button'
                     onClick={() => handleDeleteQuestion(idQuestionToDelete)}
                   >
