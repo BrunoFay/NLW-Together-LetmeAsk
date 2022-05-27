@@ -34,7 +34,6 @@ export default function AdminRoom() {
 
   function modalCloseRoom() {
     setIsClosedCliked(!isClosedCliked)
-    /* openModal() */
   }
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -48,6 +47,7 @@ export default function AdminRoom() {
   }
   async function handleDeleteQuestion(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    closeModal()
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
