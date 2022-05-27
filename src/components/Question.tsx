@@ -17,7 +17,7 @@ export default function Question({
       ${isHighlighted && !isAnswered ? 'highlighted' : ''}
        ${isAnswered ? 'answered hover:ring-current' : ''}
       ${isDarkMode ? 'bg-slate-100' : 'bg-[#fefefe]'} dark:bg-slate-300
-    peer-last:bg-black hover:ring-2 hover:ring-mainPurple-500 transition-shadow flex flex-col gap-4 justify-between
+    peer-last:bg-black hover:ring-2 hover:ring-mainColor-500 transition-shadow flex flex-col gap-4 justify-between
       md:w-[55vw]  w-[90vw] rounded-lg p-5 `}>
       <p className='font-[Roboto] text-base  max-h-[6rem] text-[#29292e]  break-all overflow-auto w-auto  '>{content}
       </p>

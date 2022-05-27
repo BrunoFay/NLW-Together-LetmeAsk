@@ -27,7 +27,7 @@ export default function NewRoom() {
   return (
     <main className={`w-[100vw] h-[100vh] flex dark:bg-mainDark-500`}>
       <section
-        className='w-[42.25rem] md:visible hidden h-[100vh] bg-gradient-to-r from-indigo-500 to-mainPurple-500  md:flex items-center ' >
+        className='w-[42.25rem] md:visible hidden h-[100vh] bg-gradient-to-r from-mainColor-700 to-mainColor-500  md:flex items-center ' >
         <div className='w-[28.688rem] pl-12 flex gap-1 flex-col items-start text-left '>
           <img src={Illustration} alt="ilustração simbolizando perguntas e repostas" />
           <h1 className='font-[Poppins] text-4xl font-bold text-white'>Toda pergunta tem uma resposta.</h1>
@@ -83,7 +83,7 @@ export default function NewRoom() {
               className='h-12 w-80 ring-1 ring-mainGrey-200 px-4 py-1 rounded-lg bg-white'
             />
             <button
-              className='h-12 w-80 text-[#fefefe] px-4 py-2 rounded-lg bg-mainPurple-500'
+              className='h-12 w-80 text-[#fefefe] px-4 py-2 rounded-lg bg-mainColor-500'
               type='submit'
             >
               Criar sala

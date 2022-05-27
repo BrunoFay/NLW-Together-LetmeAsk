@@ -2,7 +2,7 @@ body {
 @apply  text-[#29292e] overflow-x-hidden transition-colors duration-300
 }
 body,input,textarea,button{
-@apply font-normal text-base font-[Roboto,sans-serif] focus:outline-none focus:border-mainPurple-500 focus:ring-mainPurple-500 focus:ring-1
+@apply font-normal text-base font-[Roboto,sans-serif] focus:outline-none focus:border-mainColor-500 focus:ring-mainColor-500 focus:ring-1
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

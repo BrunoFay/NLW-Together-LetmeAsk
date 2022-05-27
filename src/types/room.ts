@@ -50,3 +50,8 @@ export type ModalType = {
   modalInfos: { title: string, paragraph: string, isHomePage?: boolean },
   isHomePage?: boolean
 }
+export type RoomTitleComponent = {
+  isDarkMode:boolean
+  roomTitle:string
+  questions:QuestionType[]
+}

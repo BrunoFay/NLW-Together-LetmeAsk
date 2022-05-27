@@ -4,15 +4,15 @@
 @tailwind utilities;
 
 .liked {
-  @apply text-mainPurple-500
+  @apply text-mainColor-500
 }
 
 .liked svg path {
-  @apply stroke-mainPurple-500
+  @apply stroke-mainColor-500
 }
 
 .highlighted {
-  @apply bg-[#f4f0ff] ring-1 ring-mainPurple-500
+  @apply bg-[#f4f0ff] ring-1 ring-mainColor-500
 }
 
 .highlighted .buttons-container {
@@ -24,7 +24,7 @@
 }
 
 .highlighted .hightlight-btn svg path {
-  @apply stroke-mainPurple-500
+  @apply stroke-mainColor-500
 }
 
 .answered {
@@ -32,7 +32,7 @@
 }
 
  .answered footer svg path {
-  @apply stroke-mainPurple-500
+  @apply stroke-mainColor-500
 } 
 
 .logoDarkMode svg path:nth-child(1),

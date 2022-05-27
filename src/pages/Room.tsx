@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import EmptyQuestions from '../assets/images/empty-questions.svg'
 import Question from '../components/Question'
 import RoomCodeBtn from '../components/RoomCodeBtn'
+import RoomTitleAndQuestionNumbers from '../components/RoomTitleAndQuestionNumbers'
 import ThemeSwitch from '../components/ThemeSwitch'
 import useAuth from '../hooks/useAuth'
 import useDarkMode from '../hooks/useDarkMode'
@@ -86,19 +87,11 @@ export default function Room() {
         <ThemeSwitch />
       </header>
       <main className=' room-main w-min h-[42vh] relative bottom-16 flex items-start gap-6 flex-col'>
-        <div className='flex gap-4'>
-          <h1
-            className={`font-bold text-2xl transition-colors font-[Poppins]
-             ${isDarkMode ? 'text-mainGrey-200' : ''} dark:text-mainGrey-200`}>
-            Sala {roomTitle && roomTitle}
-          </h1>
-          {questions.length > 0 ? (
-            <span
-              className='rounded-[3rem] px-3 py-1 text-[#f8f8f8] font-[Roboto] font-medium text-sm bg-[#e559f9]'>
-              {questions.length} perguntas
-            </span>
-          ) : null}
-        </div>
+        <RoomTitleAndQuestionNumbers
+          isDarkMode={isDarkMode}
+          roomTitle={roomTitle}
+          questions={questions}
+        />
         <form onSubmit={handleSendQuestion}>
           <textarea
             value={newQuestion}
@@ -114,7 +107,7 @@ export default function Room() {
                 {" "}
                 <button
                   onClick={handleLogin}
-                  className='text-mainPurple-500'> faça seu login</button>.
+                  className='text-mainColor-500'> faça seu login</button>.
               </span>) :
               (<div className='flex gap-2 items-center '>
                 <img
@@ -129,13 +122,15 @@ export default function Room() {
             }
             <button
               disabled={!user}
-              className='px-[1.5rem] rounded-lg disabled:opacity-50 disabled:pointer-events-none py-2 bg-mainPurple-500 text-[#f8f8f8]'>Enviar pergunta
+              className='px-[1.5rem] rounded-lg disabled:opacity-50 disabled:pointer-events-none py-2 bg-mainColor-500 text-[#f8f8f8]'>Enviar pergunta
             </button>
           </div>
         </form>
 
         {questions.length > 0 ? questions
           .sort((a, b) => b.likeCount - a.likeCount)
+          .sort(x => x.isHighlighted ? -1 : 1)
+          .sort(x => !x.isAnswered ? -1 : 1)
           .map(q => {
             return (
               <Question
