@@ -63,7 +63,7 @@
   .admin-header-btn button {
     @apply w-[16rem]
   }
-
+ 
   .close-room-btn {
     @apply h-10 relative bottom-5 justify-center items-center
   }
@@ -71,6 +71,7 @@
   .room-header {
     @apply flex items-center justify-between
   }
+ 
 }
 
 @media screen and (max-width: 668px) {
@@ -116,6 +117,9 @@
 
   .room-main {
     @apply pt-[10vh]
+  }
+  .questions-number{
+    @apply  px-1  py-0 h-[2.5rem]
   }
 }
 .logo svg path:nth-child(9){
