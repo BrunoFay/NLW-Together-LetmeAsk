@@ -4,6 +4,7 @@ module.exports = {
     extend: {colors:{
       mainColor:{
         500:'#009432',
+        400:'#1abc9c',
         200:'#835AFD',
         700:'#006266'
       },

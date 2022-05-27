@@ -116,3 +116,10 @@
     @apply pt-[10vh]
   }
 }
+.logo svg path:nth-child(9){
+  @apply stroke-mainColor-400
+
+}
+.logo svg path:nth-child(6),.logo svg path:nth-child(7),.logo svg path:nth-child(8){
+  @apply fill-mainColor-400
+}
