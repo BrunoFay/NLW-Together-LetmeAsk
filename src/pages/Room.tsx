@@ -67,7 +67,7 @@ export default function Room() {
             value={newQuestion}
             onChange={({ target }) => setNewQuestion(target.value)}
             className={`${isDarkMode ? 'bg-slate-200 placeholder:text-slate-500' : 'shadow-sm shadow-indigo-400'} dark:bg-slate-300 dark:placeholder:text-slate-500
-            transition-colors md:w-[55vw] w-[90vw] h-32 p-2 rounded-lg focus:ring-2 resize-none`}
+            transition-colors lg:w-[55vw] w-[90vw] h-32 p-2 rounded-lg focus:ring-2 resize-none`}
             placeholder='O que você quer perguntar?'
           />
 
