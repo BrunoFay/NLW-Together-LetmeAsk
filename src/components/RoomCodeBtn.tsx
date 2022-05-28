@@ -12,6 +12,7 @@ export default function RoomCodeBtn(props: CodeProps) {
   }
   return (
     <button
+      type='button'
       onClick={copyCodeToClipBoard}
       className='bg-mainColor-500 lg:relative lg:left-8 justify-center items-center flex gap-3 ring-2 ring-mainColor-500 rounded-lg h-10  lg:pl-3 pl-2'
 

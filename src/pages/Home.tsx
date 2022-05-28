@@ -74,7 +74,10 @@ export default function Home() {
           className='flex flex-col items-center h-[23.188rem] w-[20.063rem]
             justify-between'>
           <LogoComponent />
-          <button onClick={handleCreateRoom} className='flex justify-center text-white gap-2 rounded-lg w-[20rem] bg-secondaryColor-500 px-6 py-3'>
+          <button
+            type='button'
+            onClick={handleCreateRoom}
+            className='flex justify-center text-white gap-2 rounded-lg w-[20rem] bg-secondaryColor-500 px-6 py-3'>
             <img src={GoogleIcon} alt="logo google dentro de um botão" />
             Criar sala com o Google
           </button>

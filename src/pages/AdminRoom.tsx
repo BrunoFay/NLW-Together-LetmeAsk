@@ -72,6 +72,7 @@ export default function AdminRoom() {
         <div className='admin-header-btn flex  w-[30rem] lg:flex-row flex-col justify-evenly gap-8  '>
           <RoomCodeBtn code={`${params.id}`} />
           <button
+          type='button'
             onClick={modalCloseRoom}
             className={`${isDarkMode ? 'ring-white text-white hover:ring-mainColor-500' :
               'ring-mainColor-500 text-mainColor-500'} dark:ring-white dark:text-white dark:hover:ring-mainColor-500 ring-1 rounded-lg md:px-6 hover:text-white hover:bg-mainColor-500 transition-colors close-room-btn`}>
