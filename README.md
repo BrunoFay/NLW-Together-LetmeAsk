@@ -39,7 +39,7 @@ https://letmeask-fay.web.app/
 
 # NLW Together LetmeAsk [ENGLISH]
 
-The proposal of NLW Together was to create a Q&A application (real time), with user validation via google using**React**, **TypeScript**, **Sass** and **Firebase**, but I decided that I would bring the knowledge I obtained at NLW Return (**Tailwind** and accessibility with **Headlessui**), into this project, giving it a personalized look, including the look!
+The proposal of NLW Together was to create a live Q&A application with user validation via google using**React**, **TypeScript**, **Sass** and **Firebase**, but I decided that I would bring the knowledge I obtained at NLW Return (**Tailwind** and accessibility with **Headlessui**), into this project, giving it a personalized look, including the look!
 
 At the end of the classes, tips were given on how we could take the application to the next level, implementing responsiveness, darkmode and modals with accessibility…
 
@@ -69,4 +69,4 @@ You can view the layout of the original project through this [Link](https://www.
 
 ## To see the project working, click on the link below!
 
-https://letmeasy-fay.web.app/
+https://letmeask-fay.web.app/
