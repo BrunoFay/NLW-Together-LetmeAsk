@@ -1,6 +1,6 @@
 # NLW Together LetmeAsk [PORTUGUESE]
 
-A proposta da NLW Together era criar uma aplicação Q&A com validação de usuário via google, utilizando **React**, **TypeScript**, **Sass** e o **Firebase**, mas resolvi que iria trazer os conhecimentos que obtive na NLW Return (**Tailwind** e acessibilidade com **Headlessui**), para dentro desse projeto, dando uma personalizada nele, inclusive visual!
+A proposta da NLW Together era criar uma aplicação Q&A (em tempo real), com validação de usuário via google, utilizando **React**, **TypeScript**, **Sass** e o **Firebase**, mas resolvi que iria trazer os conhecimentos que obtive na NLW Return (**Tailwind** e acessibilidade com **Headlessui**), para dentro desse projeto, dando uma personalizada nele, inclusive visual!
 
 Ao final das aulas, foram dadas dicas de como poderíamos levar a aplicação para o próximo nível, implementando responsividade, darkmode e modais com acessibilidade…
 
@@ -39,7 +39,7 @@ https://letmeask-fay.web.app/
 
 # NLW Together LetmeAsk [ENGLISH]
 
-The proposal of NLW Together was to create a Q&A application with user validation via google using**React**, **TypeScript**, **Sass** and **Firebase**, but I decided that I would bring the knowledge I obtained at NLW Return (**Tailwind** and accessibility with **Headlessui**), into this project, giving it a personalized look, including the look!
+The proposal of NLW Together was to create a Q&A application (real time), with user validation via google using**React**, **TypeScript**, **Sass** and **Firebase**, but I decided that I would bring the knowledge I obtained at NLW Return (**Tailwind** and accessibility with **Headlessui**), into this project, giving it a personalized look, including the look!
 
 At the end of the classes, tips were given on how we could take the application to the next level, implementing responsiveness, darkmode and modals with accessibility…
 
